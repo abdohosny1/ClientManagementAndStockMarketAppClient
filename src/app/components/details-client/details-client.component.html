@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Client Details</h1>
+
+  <!-- Display Daum Details -->
+  <div class="card mb-3">
+    <div class="card-header">Client Details</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>ID : </strong> {{ client?.id}}</li>
+        <li class="list-group-item"><strong>First Name : </strong> {{ client?.firstName}}</li>
+        <li class="list-group-item"><strong>Last Name : </strong> {{ client?.firstName}}</li>
+        <li class="list-group-item"><strong>Email : </strong> {{ client?.email}}</li>
+        <li class="list-group-item"><strong>Phone : </strong> {{ client?.phone}}</li>
+
+
+        <!-- Add other Daum properties here -->
+      </ul>
+    </div>
+
+  </div>
+
+  </div>
+  <button  class="btn btn-danger ms-2" (click)="back()"  >Back</button>

@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="text-center mb-4">{{ isEditing ? 'Edit' : 'Create New' }} Client</h1>
+
+  <form [formGroup]="createClientForm" (ngSubmit)="createClientForm.valid && submitForm()" autocomplete="off">
+
+    <app-text-input [formControl]="$any(createClientForm.controls['firstName'])" [label]="'First Name'"></app-text-input>
+    <app-text-input [formControl]="$any(createClientForm.controls['lastName'])" [label]="'Last Name'"></app-text-input>
+    <app-text-input [formControl]="$any(createClientForm.controls['phone'])" [label]="'Phone'"></app-text-input>
+    <app-text-input [formControl]="$any(createClientForm.controls['email'])" [label]="'Email'" ></app-text-input>
+
+
+    <!-- Add more input fields for other form controls -->
+
+    <div class="text-center">
+      <button kendoButton *ngIf="isEditing" class="btn btn-dark" type="submit" [disabled]="!createClientForm.valid">Edit</button>
+      <button kendoButton *ngIf="!isEditing" class="btn btn-primary" type="submit" [disabled]="!createClientForm.valid">Create</button>
+      <button kendoButton  class="btn btn-danger ms-2" (click)="back()"  >Back</button>
+
+    </div>
+  </form>
+</div>

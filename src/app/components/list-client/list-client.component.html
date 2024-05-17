@@ -1,0 +1,66 @@
+<div class="container">
+  <h1 class="mb-4">Clients</h1>
+
+  <!-- Search form and Create New Client button in the same row -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="search-form">
+        <form class="d-flex" (submit)="searchClients()">
+          <input class="form-control me-2" type="search" placeholder="Search by email or name" [(ngModel)]="searchKey" name="searchKey">
+          <button class="btn btn-primary" type="submit">Search</button>
+          <button class="btn btn-outline-primary ms-2" (click)="resetFilters()">Reset</button>
+
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6 text-md-end">
+      <button class="btn btn-primary" (click)="createNewClient()">Create New Client</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+          <!-- Add more headers as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.id }}</td>
+          <td>{{ client.firstName }}</td>
+          <td>{{ client.lastName }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.phone }}</td>
+          <td>
+            <button kendoButton class="btn btn-secondary ms-2" (click)="navigateToDetails(client.id)">View Details</button>
+            <button kendoButton class="btn btn-info ms-2" (click)="navigateToEdit(client)">Edit</button>
+            <button kendoButton class="btn btn-danger ms-2" (click)="deleteClient(client.id)">Delete</button>
+          </td>
+          <!-- Add more columns as needed -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+  <pagination
+    [boundaryLinks]="true"
+    [totalItems]="pagination.totalItem"
+    [itemsPerPage]="pagination.itemPerPage"
+    [maxSize]="10"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+    previousText="&lsaquo;"
+    nextText="&rsaquo;"
+    firstText="&laquo;"
+    lastText="&raquo;">
+  </pagination>
+</div>
